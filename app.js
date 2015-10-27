@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import * as controllers from './controllers/exports';
 
 const app = express();
 const port = process.env.port || 3000;
@@ -13,7 +14,9 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
   extended: true
 }))
-app.use(require('./controllers'))
+
+
+app.use(controllers.index)
 
 app.listen(port, function() {
   console.log('Listening on port ' + port)

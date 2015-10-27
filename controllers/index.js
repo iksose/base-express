@@ -1,11 +1,13 @@
-var express = require('express')
-  , router = express.Router()
+import express from 'express';
+import { comments } from './comments';
+// import { users } from './users'
+const router = express.Router();
 
-router.use('/comments', require('./comments'))
-router.use('/users', require('./users'))
+router.use('/comments', comments)
+// router.use('/users', users)
 
 router.get('/', function(req, res) {
   res.render('index')
 })
 
-module.exports = router
+export { router as index }

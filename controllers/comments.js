@@ -1,6 +1,7 @@
-var express = require('express')
-  , router = express.Router()
-  , Comment = require('../models/comment')
+import express from 'express';
+import { Comment } from '../models/comment';
+
+const router = express.Router();
 
 router.get('/:id', function(req, res) {
   Comment.get(req.params.id, function (err, comment) {
@@ -8,4 +9,4 @@ router.get('/:id', function(req, res) {
   })
 })
 
-module.exports = router
+export { router as comments }
