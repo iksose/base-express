@@ -3,10 +3,9 @@ import { Comment } from '../models/comment';
 
 const router = express.Router();
 
-router.get('/:id', function(req, res) {
-  Comment.get(req.params.id, function (err, comment) {
-    res.render('comments/comment', {comment: comment})
-  })
+router.get('/:id', async(req, res) => {
+  const comment = await Comment.get(req.params.id);
+  res.render('comments/comment', {comment})
 })
 
 export { router as comments }
